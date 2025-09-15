@@ -1,0 +1,13 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# IDEs
+/.idea/
+/.vscode/
+*.iml
+
+# macOS
+.DS_Store
