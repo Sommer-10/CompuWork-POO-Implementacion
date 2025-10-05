@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Departamento {
@@ -11,26 +10,34 @@ public class Departamento {
         this.empleados = new ArrayList<>();
     }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-
-    // Evitamos duplicados por ID
-    public void agregarEmpleado(Empleado empleado) throws Exception {
-        for (Empleado e : empleados) {
-            if (e.getId().equals(empleado.getId())) {
-                throw new Exception("El empleado con ID " + empleado.getId() + " ya pertenece a este departamento.");
+    public void agregarEmpleado(Empleado e) throws Exception {
+        for (Empleado emp : empleados) {
+            if (emp.getId().equals(e.getId())) {
+                throw new Exception("Empleado ya registrado con ese ID");
             }
         }
-        empleados.add(empleado);
+        empleados.add(e);
     }
 
-    public void eliminarEmpleadoPorId(String id) throws Exception {
-        boolean eliminado = empleados.removeIf(e -> e.getId().equals(id));
-        if (!eliminado) throw new Exception("No se encontró empleado con ID: " + id);
+    public void mostrarEmpleados() {
+        if (empleados.isEmpty()) {
+            System.out.println("No hay empleados registrados.");
+        } else {
+            System.out.println("Empleados del departamento " + nombre + ":");
+            for (Empleado e : empleados) {
+                e.mostrarInfo();
+            }
+        }
     }
 
-    // Devolvemos lista inmodificable para proteger integridad
-    public List<Empleado> getEmpleados() {
-        return Collections.unmodifiableList(empleados);
+    public Empleado buscarEmpleadoPorId(String id) {
+        for (Empleado e : empleados) {
+            if (e.getId().equals(id)) return e;
+        }
+        return null;
+    }
+
+    public void eliminarEmpleadoPorId(String id) {
+        empleados.removeIf(e -> e.getId().equals(id));
     }
 }
