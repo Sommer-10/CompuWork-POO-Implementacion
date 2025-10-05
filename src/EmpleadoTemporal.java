@@ -6,11 +6,18 @@ public class EmpleadoTemporal extends Empleado {
         this.mesesContrato = mesesContrato;
     }
 
-    public int getMesesContrato() { return mesesContrato; }
-    public void setMesesContrato(int mesesContrato) { this.mesesContrato = mesesContrato; }
+    public int getMesesContrato() {
+        return mesesContrato;
+    }
 
     @Override
     public double calcularBonificacion() {
-        return getSalario() * 0.05;
+        return getSalario() * 0.05 * mesesContrato / 12; // proporcional
+    }
+
+    @Override
+    public void mostrarInfo() {
+        super.mostrarInfo();
+        System.out.println("Tipo: Temporal | Duración contrato: " + mesesContrato + " meses");
     }
 }
