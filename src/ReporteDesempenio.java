@@ -8,18 +8,10 @@ public class ReporteDesempenio {
     }
 
     public void generarReporte() {
-        System.out.println("====== REPORTE DE DESEMPEÑO ======");
-        System.out.println("Empleado: " + empleado.getNombre() + " (ID: " + empleado.getId() + ")");
+        System.out.println("\n=== REPORTE DE DESEMPEÑO ===");
+        empleado.mostrarInfo();
         System.out.println("Evaluación: " + evaluacion);
-        System.out.printf("Bonificación calculada: $%.2f%n", empleado.calcularBonificacion());
-        System.out.println("==================================");
-    }
-
-    @Override
-    public String toString() {
-        return "ReporteDesempenio{" +
-                "empleado=" + empleado.getNombre() +
-                ", evaluacion='" + evaluacion + ''' +
-                '}';
+        System.out.println("Bonificación calculada: $" + empleado.calcularBonificacion());
+        System.out.println("=============================");
     }
 }
