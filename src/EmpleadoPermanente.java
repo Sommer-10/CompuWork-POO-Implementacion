@@ -6,11 +6,18 @@ public class EmpleadoPermanente extends Empleado {
         this.beneficios = beneficios;
     }
 
-    public double getBeneficios() { return beneficios; }
-    public void setBeneficios(double beneficios) { this.beneficios = beneficios; }
+    public double getBeneficios() {
+        return beneficios;
+    }
 
     @Override
     public double calcularBonificacion() {
         return getSalario() * 0.10 + beneficios;
+    }
+
+    @Override
+    public void mostrarInfo() {
+        super.mostrarInfo();
+        System.out.println("Tipo: Permanente | Beneficios: $" + beneficios);
     }
 }
